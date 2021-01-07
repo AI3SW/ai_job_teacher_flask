@@ -44,7 +44,7 @@ $ flask run --host=0.0.0.0 --port=5000
 
 ```bash
 $ docker build -t <app_name> -f DockerFile .
-$ nvidia-docker run -d --rm -p 5000:5000 <app_name>
+$ docker run -d --rm -p 5000:5000 <app_name>
 
 $ # tear down container
 $ docker stop <app_name>
