@@ -139,3 +139,6 @@ cython_debug/
 
 data/
 .vscode/
+
+resources/input_img
+resources/output_img

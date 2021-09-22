@@ -10,7 +10,7 @@ dictConfig(LOGGING_CONFIG)
 def create_app():
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_object('config')
-    # app.config.from_pyfile('config.py')
+    app.config.from_pyfile('config.py')
 
     # init model store
     from flask_app.model import init_model_store
@@ -35,9 +35,9 @@ def create_app():
     # register api resources
     from flask_restful import Api
 
-    from flask_app.resources.foo import FOO_ENDPOINT, FooResouce
+    from flask_app.resources.job import JOB_ENDPOINT, JobResource
 
     api = Api(app)
-    api.add_resource(FooResouce, FOO_ENDPOINT)
+    api.add_resource(JobResource, JOB_ENDPOINT)
 
     return app

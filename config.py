@@ -18,3 +18,6 @@ LOGGING_CONFIG = {
         'handlers': ['console', 'file']
     }
 }
+
+INPUT_IMG_PATH = "./resources/input_img"
+OUTPUT_IMG_PATH = "./resources/output_img"
