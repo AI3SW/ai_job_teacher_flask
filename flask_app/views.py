@@ -43,6 +43,7 @@ def predict():
         job_id = req.get('job_id')
 
         # TODO: check that job_id is in db
+        # TODO: offload image save to a background process
 
         # process input image
         input_pil_img = base64_to_image(img)
@@ -54,7 +55,7 @@ def predict():
 
         # process output image
         model: simswap.SimSwapModel = model_store['simswap']
-        output_base64_img: str = model.predict(input_img)
+        output_base64_img: str = model.predict(img)
         output_pil_img = base64_to_image(output_base64_img)
         output_file_path = Path(current_app.config['OUTPUT_IMG_PATH']) \
             / f'{uuid.uuid4()}.png'
