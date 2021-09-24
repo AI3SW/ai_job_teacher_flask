@@ -1,5 +1,6 @@
 import logging
 from logging.config import dictConfig
+from pathlib import Path
 
 from config import LOGGING_CONFIG
 from flask import Flask
@@ -39,5 +40,11 @@ def create_app():
 
     api = Api(app)
     api.add_resource(JobResource, JOB_ENDPOINT)
+
+    # create resources directory if needed
+    input_img_dir = Path(app.config["INPUT_IMG_PATH"])
+    input_img_dir.mkdir(exist_ok=True)
+    output_img_dir = Path(app.config["OUTPUT_IMG_PATH"])
+    output_img_dir.mkdir(exist_ok=True)
 
     return app

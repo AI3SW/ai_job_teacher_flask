@@ -10,6 +10,12 @@ $ conda env create --file environments/environment.yml
 $ conda activate ai-job-teacher-flask
 ```
 
+- Installation of `psycopg2` might require installation of `libpq-dev`:
+
+```bash
+$ sudo apt-get install libpq-dev
+```
+
 ## Instance Configuration
 
 In [./instance/config.py](instance/config.py):
@@ -44,10 +50,10 @@ $ gunicorn -w 1 'flask_app:create_app()'
 
 ### Build and Run Flask App using Docker
 
-* Current image is only CPU compatible
-* Update dockerfile, replacing `<app_name>`
-* Add `instance/config` file
-* Build and Run Image
+- Current image is only CPU compatible
+- Update dockerfile, replacing `<app_name>`
+- Add `instance/config` file
+- Build and Run Image
 
 ```bash
 $ docker build -t <app_name> -f DockerFile .
