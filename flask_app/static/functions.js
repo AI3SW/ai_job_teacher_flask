@@ -39,7 +39,7 @@ window.onload = function () {
         let data = {
             user_id: "test_user",
             img: get_base64_string_from_img("#output_img"),
-            job_id: 1
+            job_id: parseInt($("#job_select").val())
         };
 
         $.ajax("image", {
