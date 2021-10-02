@@ -1,27 +1,36 @@
 import logging
 
-from flask_app.commons.util import image_to_base64
+import requests
 from flask_app.model.declarations import BaseModel
-from PIL import Image
 
 
 class SimSwapModel(BaseModel):
     def __init__(self):
         self.predictor = None
+        self.sim_swap_url = ""
 
     def init_model(self, config):
-        pass
+        self.sim_swap_url = config['MODEL_CONFIG']['SIM_SWAP_PREDICT_URL']
 
-    def predict(self, input_image: str) -> str:
+    def predict(self, src_image: str, ref_img: str) -> str:
         """
-        input_image: image in Base64 encoded format
+        src_image: image in Base64 encoded format
+        ref_img: image in Base64 encoded format
 
         returns output image in Base64 encoded format
         """
-        # TODO: change placeholder
-        placeholder = Image.open('./resources/sample/astronaut.jpg')
-        encode_str = image_to_base64(placeholder)
-        return encode_str
+        payload = {
+            'src_img': src_image,
+            'ref_img': ref_img
+        }
+
+        try:
+            response = requests.post(self.sim_swap_url, json=payload)
+            response_json = response.json()
+            output_img = response_json['output_img']
+            return output_img
+        except Exception as error:
+            logging.error(error)
 
     def format_prediction(self, prediction):
         pass
