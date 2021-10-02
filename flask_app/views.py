@@ -124,3 +124,12 @@ def get_audio():
         error_msg = f"File not found at {output_file_path}"
         logging.exception(error_msg)
         return {'error': error_msg}
+
+
+@blueprint.route('/version', methods=['GET'])
+def get_version():
+    logging.info('GET /version')
+
+    version = current_app.config.get("VERSION", "0")
+
+    return {"version": version}
