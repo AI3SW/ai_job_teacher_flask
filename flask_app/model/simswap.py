@@ -3,6 +3,8 @@ import logging
 import requests
 from flask_app.model.declarations import BaseModel
 
+logger = logging.getLogger(__name__)
+
 
 class SimSwapModel(BaseModel):
     def __init__(self):
@@ -30,7 +32,7 @@ class SimSwapModel(BaseModel):
             output_img = response_json['output_img']
             return output_img
         except Exception as error:
-            logging.error(error)
+            logger.error(error)
 
     def format_prediction(self, prediction):
         pass

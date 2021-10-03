@@ -46,5 +46,7 @@ def create_app():
     input_img_dir.mkdir(exist_ok=True)
     output_img_dir = Path(app.config["OUTPUT_IMG_PATH"])
     output_img_dir.mkdir(exist_ok=True)
+    audio_dir = Path(app.config["AUDIO_PATH"])
+    audio_dir.mkdir(exist_ok=True)
 
     return app

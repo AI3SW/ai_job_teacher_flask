@@ -21,8 +21,10 @@ LOGGING_CONFIG = {
 
 INPUT_IMG_PATH = "./resources/input_img"
 OUTPUT_IMG_PATH = "./resources/output_img"
+AUDIO_PATH = "./resources/audio"
 ASSETS_PATH = "./resources/assets"
 
 MODEL_CONFIG = {
-    'SIM_SWAP_PREDICT_URL': "http://localhost:5001/predict"
+    'SIM_SWAP_PREDICT_URL': "http://localhost:5001/predict",
+    'PYTHON_TTS_PREDICT_URL': "http://localhost:5002/predict"
 }
