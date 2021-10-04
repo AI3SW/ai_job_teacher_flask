@@ -129,3 +129,12 @@ def get_audio(text: str):
     except Exception as error:
         logging.error(str(error))
         return str(error), 404
+
+
+@blueprint.route('/version', methods=['GET'])
+def get_version():
+    logging.info('GET /version')
+
+    version = current_app.config.get("VERSION", "0")
+
+    return {"version": version}

@@ -17,7 +17,7 @@
     <div class="container-fluid">
         <div class="container-fluid text-center my-5">
             <h1 class="m-5">AI Job Teacher</h1>
-            <p>Flask App for AI Job Teacher that currently returns placeholder values/files.</p>
+            <p>Flask App for AI Job Teacher.</p>
         </div>
 
         <div class="container-fluid row text-center">
@@ -48,6 +48,7 @@
         </div>
 
         <div class="container-fluid text-center my-5">
+            <button id="get_version_button" type="button" class="btn btn-primary mx-5">GET Version</button>
             <button id="get_job_button" type="button" class="btn btn-primary mx-5">GET Job</button>
             <button id="post_image_button" type="button" class="btn btn-primary mx-5">POST Image</button>
             <button id="get_audio_button" type="button" class="btn btn-primary mx-5">GET Audio</button>
@@ -55,8 +56,12 @@
         </div>
 
         <div class="container-fluid-md text-center my-5">
+            <div id="get_version_content_div" class="d-none container text-left" style="max-width: 800px;">
+                <pre><code class="d-inline-block" style="max-width: 100%; font-size: 18px; overflow: hidden; text-overflow: ellipsis;"></code></pre>
+            </div>
+
             <div id="get_job_content_div" class="d-none container text-left" style="max-width: 800px;">
-                <pre><code id="json" class="d-inline-block" style="max-width: 100%; font-size: 18px; overflow: hidden; text-overflow: ellipsis;"></code></pre>
+                <pre><code class="d-inline-block" style="max-width: 100%; font-size: 18px; overflow: hidden; text-overflow: ellipsis;"></code></pre>
             </div>
 
             <div id="post_image_content_div" class="d-none container" style="max-width: 800px;">
