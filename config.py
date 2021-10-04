@@ -1,3 +1,5 @@
+VERSION = "1.0"
+
 LOGGING_CONFIG = {
     'version': 1,
     'formatters': {'default': {

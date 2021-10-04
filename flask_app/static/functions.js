@@ -1,4 +1,9 @@
-const content_div_id_list = ["get_job_content_div", "post_image_content_div", "get_audio_button_div"];
+const content_div_id_list = [
+    "get_version_content_div",
+    "get_job_content_div",
+    "post_image_content_div",
+    "get_audio_button_div"
+];
 
 var toggle_content = function (content_div_id) {
     for (let index = 0; index < content_div_id_list.length; index++) {
@@ -26,10 +31,20 @@ var loadFile = function (event) {
 };
 
 window.onload = function () {
+    $("#get_version_button").click(function () {
+        $.ajax({
+            url: "version", type: "GET", success: function (result) {
+                toggle_content("get_version_content_div");
+                $("#get_version_content_div code")[0].innerHTML = JSON.stringify(result, undefined, 2);
+            }
+        });
+    });
+
     $("#get_job_button").click(function () {
         $.ajax({
             url: "job", type: "GET", success: function (result) {
                 toggle_content("get_job_content_div");
+                $("#get_job_content_div code")[0].innerHTML = JSON.stringify(result, undefined, 2);
                 document.getElementById("json").innerHTML = JSON.stringify(result, undefined, 2);
             }
         });
