@@ -105,25 +105,30 @@ def predict():
         return {'error': 'Error in prediction'}
 
 
-@blueprint.route('/audio', methods=['GET'])
-def get_audio():
-    logging.info('GET /audio')
+@blueprint.route('/audio/<text>', methods=['GET'])
+def get_audio(text: str):
+    logging.info(f'GET /audio/{text}')
 
-    input_string = request.args.get('input', '')
-    if not input_string:
+    if not text or text.strip() == '':
         error_msg = "No input_string detected"
-        logging.exception(error_msg)
-        return {'error': error_msg}
+        logging.error(error_msg)
+        return error_msg, 404
 
+    input_string = ' '.join(text.strip().lower().split('_'))
     model: text2speech.Text2SpeechModel = model_store['text2speech']
-    output_file_path = model.predict(input_string)
 
     try:
+        output_file_path = model.predict(input_string)
         return send_file(str(output_file_path.resolve()))
+
     except FileNotFoundError:
         error_msg = f"File not found at {output_file_path}"
         logging.exception(error_msg)
-        return {'error': error_msg}
+        return error_msg, 404
+
+    except Exception as error:
+        logging.error(str(error))
+        return str(error), 404
 
 
 @blueprint.route('/version', methods=['GET'])

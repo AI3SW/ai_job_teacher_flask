@@ -70,8 +70,11 @@ window.onload = function () {
 
     $("#get_audio_button").click(function () {
         let audio_text_input = $("#audio_text_input").val();
-        let url = new URL("audio", window.location.href);
-        url.searchParams.set("input", audio_text_input);
+        audio_text_input = audio_text_input.trim()
+        audio_text_input = audio_text_input.toLowerCase()
+        audio_text_input = audio_text_input.replace(' ', '_')
+
+        let url = new URL(`/audio/${audio_text_input}`, window.location.href);
 
         $('#audio_source').prop('src', url.href);
         $('#audio').get(0).load();

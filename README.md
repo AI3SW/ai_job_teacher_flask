@@ -10,10 +10,16 @@ $ conda env create --file environments/environment.yml
 $ conda activate ai-job-teacher-flask
 ```
 
-- Installation of `psycopg2` might require installation of `libpq-dev`:
+- Installation of `psycopg2` requires installation of `libpq-dev`:
 
 ```bash
 $ sudo apt-get install libpq-dev
+```
+
+- Installation of `pydub` requires installation of `ffmpeg`:
+
+```bash
+$ sudo apt-get install ffmpeg
 ```
 
 ## Instance Configuration
