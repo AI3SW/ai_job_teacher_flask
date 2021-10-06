@@ -11,4 +11,4 @@ class JobResource(Resource):
     def get(self):
         logging.info('GET %s', JOB_ENDPOINT)
         jobs = Job.query.all()
-        return job_list_schema.dump(jobs)
+        return {"jobs": job_list_schema.dump(jobs)}
